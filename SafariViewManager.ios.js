@@ -1,14 +1,17 @@
 /**
  * @providesModule SafariViewManager
  */
+
 'use strict';
+
 import {
   NativeModules,
-  NativeAppEventEmitter,
-  DeviceEventEmitter,
+  NativeEventEmitter,
   processColor
 } from 'react-native';
+
 const NativeSafariViewManager = NativeModules.SafariViewManager;
+const moduleEventEmitter = new NativeEventEmitter(NativeSafariViewManager);
 
 /**
  * High-level docs for the SafariViewManager iOS API can be written here.
@@ -41,19 +44,11 @@ const SafariViewManager = {
   },
 
   addEventListener(event, listener) {
-    if (event === 'onShow') {
-      return DeviceEventEmitter.addListener('SafariViewOnShow', listener);
-    } else if (event === 'onDismiss') {
-      return NativeAppEventEmitter.addListener('SafariViewOnDismiss', listener);
-    }
+    return moduleEventEmitter.addListener(event, listener);
   },
 
   removeEventListener(event, listener) {
-    if (event === 'onShow') {
-      DeviceEventEmitter.removeListener('SafariViewOnShow', listener);
-    } else if (event === 'onDismiss') {
-      NativeAppEventEmitter.removeListener('SafariViewOnDismiss', listener);
-    }
+    moduleEventEmitter.removeListener(event, listener);
   }
 };
 
