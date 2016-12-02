@@ -52,7 +52,7 @@ class YourComponent extends Component {
 
   _pressHandler() {
     SafariView.isAvailable()
-      .then(SafariView.show({
+      .then(() => SafariView.show({
         url: "https://github.com/naoufal"
       }))
       .catch(error => {
