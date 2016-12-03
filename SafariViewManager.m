@@ -15,6 +15,11 @@ RCT_EXPORT_MODULE()
   return dispatch_get_main_queue();
 }
 
+- (NSDictionary *)constantsToExport
+{
+    return @{ @"isAvailable": @(!![SFSafariViewController class]) };
+}
+
 RCT_EXPORT_METHOD(show:(NSDictionary *)args callback:(RCTResponseSenderBlock)callback)
 {
     UIColor *tintColorString = args[@"tintColor"];
@@ -59,16 +64,6 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)args callback:(RCTResponseSenderBlock)cal
     [ctrl presentViewController:self.safariView animated:YES completion:nil];
 
     [self.bridge.eventDispatcher sendDeviceEventWithName:@"SafariViewOnShow" body:nil];
-}
-
-RCT_EXPORT_METHOD(isAvailable:(RCTResponseSenderBlock)callback)
-{
-    if ([SFSafariViewController class]) {
-        // SafariView is available
-        return callback(@[[NSNull null], @true]);
-    } else {
-        return callback(@[RCTMakeError(@"[SafariView] SafariView is unavailable.", nil, nil)]);
-    }
 }
 
 RCT_EXPORT_METHOD(dismiss)

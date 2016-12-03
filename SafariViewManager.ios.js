@@ -14,7 +14,9 @@ const NativeSafariViewManager = NativeModules.SafariViewManager;
  * High-level docs for the SafariViewManager iOS API can be written here.
  */
 
-export default {
+const SafariViewManager = {
+  isAvailable: !!NativeSafariViewManager.isAvailable,
+
   show(options) {
     if (options && options.tintColor) {
       options.tintColor = processColor(options.tintColor);
@@ -38,18 +40,6 @@ export default {
     NativeSafariViewManager.dismiss();
   },
 
-  isAvailable() {
-    return new Promise((resolve, reject) => {
-      NativeSafariViewManager.isAvailable((error) => {
-        if (error) {
-          return reject(error);
-        }
-
-        resolve(true);
-      });
-    });
-  },
-
   addEventListener(event, listener) {
     if (event === 'onShow') {
       return DeviceEventEmitter.addListener('SafariViewOnShow', listener);
@@ -66,3 +56,5 @@ export default {
     }
   }
 };
+
+export default SafariViewManager;
