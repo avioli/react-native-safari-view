@@ -11,18 +11,20 @@ import React, {
   View
 } from 'react-native';
 
+import SafariView from 'react-native-safari-view';
+
 class SafariViewExample extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          react-native-safari-view
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.android.js
+          github.com/naoufal/react-native-safari-view
         </Text>
         <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
+          {SafariView.isAvailable ? 'SafariView is available' : 'SafariView is not available'}
         </Text>
       </View>
     );

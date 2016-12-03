@@ -42,6 +42,9 @@ class SafariViewExample extends Component {
         <Text style={styles.instructions}>
           github.com/naoufal/react-native-safari-view
         </Text>
+        <Text style={styles.instructions}>
+          {SafariView.isAvailable ? 'SafariView is available' : 'SafariView is not available'}
+        </Text>
         <TouchableHighlight
           style={styles.btn}
           onPress={this._clickHandler}
@@ -65,17 +68,17 @@ class SafariViewExample extends Component {
       readerMode: true,
       tintColor: "rgb(0, 0, 0)",
       fromBottom: true
+    }).catch((error) => {
+      console.error('Error', error);
     });
   }
 
   _isAvailable() {
-    SafariView.isAvailable()
-      .then(success => {
-        AlertIOS.alert('SFSafariView available.');
-      })
-      .catch(error => {
-        AlertIOS.alert('SFSafariView not available.');
-      });
+    if (SafariView.isAvailable) {
+      AlertIOS.alert('SafariView available.');
+    } else {
+      AlertIOS.alert('SafariView not available.');
+    }
   }
 }
 

@@ -46,18 +46,14 @@ import React, { Component } from "react";
 import SafariView from "react-native-safari-view";
 
 class YourComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   _pressHandler() {
-    SafariView.isAvailable()
-      .then(() => SafariView.show({
+    if (SafariView.isAvailable) {
+      SafariView.show({
         url: "https://github.com/naoufal"
-      }))
-      .catch(error => {
+      }).catch((error) => {
         // Fallback WebView code for iOS 8 and earlier
       });
+    }
   }
 
   render() {
@@ -97,18 +93,14 @@ SafariView.show({
 });
 ```
 
-### isAvailable()
-Checks if Safari View is available on the device.
+### isAvailable
+A constant, indicating whether Safari View is available on the device.
 
 __Example__
 ```js
-SafariView.isAvailable()
-  .then(available => {
-    console.log("SafariView is available.");
-  })
-  .catch(error => {
-    console.log(error);
-  });
+if (SafariView.isAvailable) {
+  console.log("SafariView is available.");
+}
 ```
 
 ## Events
