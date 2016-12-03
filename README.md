@@ -6,6 +6,8 @@
 
 React Native Safari View is a [Safari View Controller](https://developer.apple.com/videos/wwdc/2015/?id=504) wrapper for [React Native](https://facebook.github.io/react-native/).
 
+**`SFSafariViewController` was introduced with iOS 9, so make sure you are building your targed for minimum iOS 9.**
+
 ![react-native-safari-view](https://cloud.githubusercontent.com/assets/1627824/8345135/ed5f7fc4-1ab8-11e5-814a-a3e9df0ede06.gif)
 
 ## Documentation
