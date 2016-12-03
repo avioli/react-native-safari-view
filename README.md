@@ -23,6 +23,8 @@ React Native Safari View is a [Safari View Controller](https://developer.apple.c
 
 ```shell
 npm i --save react-native-safari-view
+# or
+yarn add react-native-safari-view
 ```
 
 ## Usage
