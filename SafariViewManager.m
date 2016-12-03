@@ -32,6 +32,12 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)args callback:(RCTResponseSenderBlock)cal
         return;
     }
 
+    UIViewController *presentingController = RCTPresentedViewController();
+    if (presentingController == nil) {
+        callback(@[RCTMakeError(@"Tried to display a Safari View but there is no application window.", nil, nil), [NSNull null]]);
+        return;
+    }
+
     // Initialize the Safari View
     self.safariView = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:args[@"url"]] entersReaderIfAvailable:args[@"readerMode"]];
     self.safariView.delegate = self;
@@ -60,10 +66,10 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)args callback:(RCTResponseSenderBlock)cal
     }
 
     // Display the Safari View
-    UIViewController *ctrl = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-    [ctrl presentViewController:self.safariView animated:YES completion:nil];
+    [presentingController presentViewController:self.safariView animated:YES completion:nil];
 
     [self.bridge.eventDispatcher sendDeviceEventWithName:@"SafariViewOnShow" body:nil];
+    callback(@[[NSNull null], @(YES)]);
 }
 
 RCT_EXPORT_METHOD(dismiss)
