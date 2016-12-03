@@ -88,7 +88,7 @@ RCT_EXPORT_METHOD(dismiss)
 - (void)invalidate
 {
     if (self.safariView) {
-        [self.safariView.presentingViewController dismissViewControllerAnimated:NO completion:nil];
+        [self.safariView dismissViewControllerAnimated:NO completion:nil];
     }
 }
 
