@@ -85,4 +85,11 @@ RCT_EXPORT_METHOD(dismiss)
     [self.bridge.eventDispatcher sendAppEventWithName:@"SafariViewOnDismiss" body:nil];
 }
 
+- (void)invalidate
+{
+    if (self.safariView) {
+        [self.safariView.presentingViewController dismissViewControllerAnimated:NO completion:nil];
+    }
+}
+
 @end
