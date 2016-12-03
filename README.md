@@ -37,10 +37,12 @@ For manual steps - check the [React Native Docs](https://facebook.github.io/reac
 
 ### Displaying the Safari View
 
-Once you've linked the library, you'll want to make it available to your app by requiring it:
+Once you've linked the library, you'll want to make it available to your app by importing or requiring it:
 
 ```js
-var SafariView = require("react-native-safari-view");
+import SafariView from "react-native-safari-view";
+// or
+const SafariView = require("react-native-safari-view");
 ```
 
 Displaying the Safari View is as simple as calling:

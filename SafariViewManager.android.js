@@ -9,4 +9,5 @@ const SafariViewManager = {
   isAvailable: false
 };
 
-module.exports = SafariViewManager;
+exports.default = SafariViewManager;
+module.exports = exports['default'];

@@ -1,3 +1,4 @@
 import SafariViewManager from './SafariViewManager';
 
-export default SafariViewManager;
+exports.default = SafariViewManager;
+module.exports = exports['default'];
