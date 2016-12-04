@@ -131,6 +131,8 @@ if (SafariView.isAvailable) {
 
 The following events are fired by the Safari View.
 
+**NOTE:** Ensure to add "onShow" listeners, before you call show().
+
 ### onShow
 
 __Example__
